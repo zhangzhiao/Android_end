@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="bottom"
+    android:gravity="bottom"
+    tools:context=".MainActivity"
+    android:background="@drawable/opop">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:id="@+id/alllayout"
+    />
+    <EditText
+        android:id="@+id/edit"
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
+        android:layout_gravity="center"
+        android:background="@drawable/back_edit"
+        android:ems="10"
+        android:hint="在这里输入你想呼叫的用户"
+        android:textSize="24dp"
+        android:textColor="#ffffff"
+        android:gravity="center" />
+ <LinearLayout
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:orientation="horizontal">
+     <Button
+         android:layout_gravity="center"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:id="@+id/calls"
+         android:layout_weight="1"
+         android:textColor="#fff"
+         android:background="@drawable/btn_bacg"
+         android:text="呼叫"
+         />
+     <Button
+         android:layout_gravity="center"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:id="@+id/mess"
+         android:layout_weight="1"
+         android:textColor="#fff"
+         android:background="@drawable/btn_close"
+         android:text="聊天"
+         />
+ </LinearLayout>
+</LinearLayout>

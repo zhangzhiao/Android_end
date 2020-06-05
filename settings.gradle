@@ -1,0 +1,5 @@
+rootProject.name='Intercom'
+include ':app', ':facelibrary'
+include ':auto'
+include ':service'
+include ':app'

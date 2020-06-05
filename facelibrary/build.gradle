@@ -1,0 +1,50 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion '29.0.3'
+    publishNonDefault true
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 4
+        versionName "3.1.1-pos"
+
+        ndk {
+            moduleName "facesdk"
+            ldLibs "log"
+            abiFilters "armeabi-v7a"
+        }
+    }
+
+    /*
+    sourceSets.main {
+        jni.srcDirs "src/main/jni"
+        jniLibs.srcDir "libs"
+    }
+    */
+    packagingOptions {       //避免重复导入库
+        exclude 'lib/armeabi-v7a/libSerialPort.so'
+    }
+     sourceSets.main {
+         jni.srcDirs = []
+         jniLibs.srcDir "libs"
+     }
+    packagingOptions {//加上这写代码
+        pickFirst 'META-INF/*'
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            debuggable true
+            jniDebuggable true
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+}

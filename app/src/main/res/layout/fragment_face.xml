@@ -1,0 +1,56 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@id/search_title"
+    android:id="@+id/all_relative"
+    android:orientation="vertical"
+    >
+    <TextView
+        android:id="@+id/track_txt"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="#016838"
+        android:gravity="center"
+        android:textColor="#ffffff"
+        android:visibility="gone" />
+    <TextView
+        android:id="@+id/detect_text"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginBottom="12dp"
+        android:gravity="center"
+        android:textColor="#000000" />
+    <TextureView
+        android:id="@+id/ir_camera_preview_view"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        />
+
+    <TextureView
+        android:id="@+id/camera_preview_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+
+    <com.xbzn.Intercom.camera.AutoTexturePreviewView
+        android:id="@+id/auto_camera_preview_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        />
+
+    <TextureView
+        android:id="@+id/draw_detect_face_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#898989" />
+
+</LinearLayout>

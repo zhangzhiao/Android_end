@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/msg_recycler_view"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            tools:ignore="NestedWeights" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:background="#fff"
+        android:layout_gravity="bottom"
+        android:id="@+id/linearLayout"
+     >
+
+        <EditText
+            android:layout_width="0dp"
+            android:paddingLeft="10dp"
+            android:layout_height="40dp"
+            android:inputType="textPersonName"
+            android:text=""
+            android:layout_weight="1"
+            android:ems="10"
+            android:descendantFocusability="beforeDescendants"
+            android:hint="请输入内容"
+            android:id="@+id/input_Text"
+            android:maxLines="2" />
+
+        <Button
+            android:text="发送"
+            android:layout_width="wrap_content"
+            android:textColor="#fff"
+            android:background="@drawable/btn_bg"
+            android:id="@+id/send_mess"
+            android:layout_marginLeft="5dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
+</LinearLayout>

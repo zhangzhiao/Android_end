@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        package="com.xbzn.Intercom">
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.hardware.camera.autofocus" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.INSTALL_PACKAGES" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature
+            android:name="android.hardware.camera.autofocus"
+            android:required="true" />
+    <uses-feature
+            android:name="android.hardware.camera.front"
+            android:required="true" />
+    <uses-feature
+            android:name="android.hardware.camera.front.autofocus"
+            android:required="true" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+            android:name=".app.BaseApplication"
+            android:allowBackup="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:sharedUserId="android.uid.system"
+            android:supportsRtl="true"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            tools:ignore="GoogleAppIndexingWarning"
+            tools:replace="android:allowBackup,android:icon">
+        <service
+                android:name=".service_android.Updata_Service"
+                android:enabled="true"
+                android:exported="true"></service>
+
+        <activity android:name=".mvp.ui.activity.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!--
+         只要依赖 AutoSize 就必须填写设计图尺寸, 否则报错, 不想使用 AutoSize 就不要依赖 AutoSize
+        只要填写完设计图的尺寸, AutoSize 就会自动启动, 以下 dp 尺寸是根据公式 px / (dpi / 160) 求出, 运算时使用测试机的 dpi 即可
+        AutoSize 的详细介绍请看这里 https://juejin.im/post/5bce688e6fb9a05cf715d1c2
+        -->
+        <meta-data
+                android:name="design_width_in_dp"
+                android:value="360" />
+        <meta-data
+                android:name="design_height_in_dp"
+                android:value="640" /> <!-- arms配置 -->
+        <meta-data
+                android:name="com.xbzn.Intercom.app.GlobalConfiguration"
+                android:value="ConfigModule" />
+
+        <activity
+                android:name="com.baidu.liantian.LiantianActivity"
+                android:excludeFromRecents="true"
+                android:exported="true"
+                android:launchMode="standard"
+                android:theme="@android:style/Theme.Translucent">
+            <intent-filter>
+                <action android:name="com.baidu.action.Liantian.VIEW" />
+
+                <category android:name="com.baidu.category.liantian" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".mvp.ui.activity.FaceConfigActivity" />
+        <activity android:name=".mvp.ui.activity.FaceMainSearchActivity" />
+        <activity android:name=".mvp.ui.activity.setting.CameraDisplayAngleActivity" />
+        <activity android:name=".mvp.ui.activity.FaceAuthActicity" />
+        <activity android:name=".mvp.ui.activity.FaceRGBCloseDebugSearchActivity" />
+        <activity android:name=".mvp.ui.activity.setting.DebugModeActivity" />
+        <activity android:name=".mvp.ui.activity.setting.DetectFllowStrategyActivity" />
+        <activity android:name=".mvp.ui.activity.setting.DetectTrailStrategyActivity" />
+        <activity android:name=".mvp.ui.activity.setting.FaceDetectAngleActivity" />
+        <activity android:name=".mvp.ui.activity.setting.FaceLivenessThresholdActivity" />
+        <activity android:name=".mvp.ui.activity.setting.MinFaceActivity" />
+        <activity android:name=".mvp.ui.activity.setting.FaceLivinessType" />
+        <activity android:name=".mvp.ui.activity.setting.QualityControlActivity" />
+        <activity android:name=".mvp.ui.activity.setting.RecognizeModleThresholdActivity" />
+        <activity android:name=".mvp.ui.activity.setting.RecognizeModleTypeAcctivity" />
+        <activity android:name=".mvp.ui.activity.setting.SettingMainActivity" />
+        <activity android:name=".mvp.ui.activity.inMainActivity" />
+        <activity android:name=".mvp.ui.activity.BatchImportActivity" />
+        <activity android:name=".mvp.ui.activity.Video" />
+
+        <receiver android:name=".receiver.BootBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_REPLACED" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+        <receiver
+                android:name="com.baidu.liantian.LiantianReceiver"
+                android:exported="false">
+            <intent-filter>
+                <action android:name="com.baidu.action.Liantian.VIEW" />
+
+                <category android:name="com.baidu.category.liantian" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter android:priority="2147483647">
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".receiver.BootReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </receiver>
+
+        <provider
+                android:name="com.baidu.liantian.LiantianProvider"
+                android:authorities="com.xbzn.Intercom.liantian.ac.provider"
+                android:exported="false" />
+
+        <service android:name=".socket.SocketService" />
+        <service
+                android:name="com.baidu.liantian.LiantianService"
+                android:exported="false">
+            <intent-filter>
+                <action android:name="com.baidu.action.Liantian.VIEW" />
+
+                <category android:name="com.baidu.category.liantian" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+        <service android:name=".service_android.LoadUserDataService" />
+
+        <meta-data
+                android:name="design_width_in_dp"
+                android:value="360" />
+        <meta-data
+                android:name="design_height_in_dp"
+                android:value="640" /> <!-- arms配置 -->
+        <meta-data
+                android:name="seckey_avscan"
+                android:value="660346260f8a841a04ec2a56815b421b" />
+        <meta-data
+                android:name="appkey_avscan"
+                android:value="100034" />
+    </application>
+
+</manifest>
